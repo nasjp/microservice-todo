@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package pb;
+
+message CreateTodoRequest {
+  string title = 1;
+}
+
+message CreateTodoResponse {
+  string id = 1;
+}
+
+
+message ListTodoRequest {}
+
+message ListTodoResponse {
+  repeated Todo todos = 1;
+}
+
+message Todo {
+  string id = 1;
+  string title = 2;
+}
+
+service TodoRepository {
+  rpc Create (CreateTodoRequest) returns (CreateTodoResponse) {}
+  rpc List (ListTodoRequest) returns (ListTodoResponse) {}
+}
+

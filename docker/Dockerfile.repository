@@ -1,0 +1,11 @@
+FROM golang:1.15-alpine3.12 as build
+WORKDIR /repository
+COPY . /repository
+RUN go build ./service/repository
+
+FROM alpine:3.12
+COPY --from=build /repository/repository ./repository
+
+EXPOSE 3000
+
+CMD [ "./repository" ]
