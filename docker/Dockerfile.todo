@@ -1,0 +1,11 @@
+FROM golang:1.15-alpine3.12 as build
+WORKDIR /todo
+COPY . /todo
+RUN go build ./service/todo
+
+FROM alpine:3.12
+COPY --from=build /todo/todo ./todo
+
+EXPOSE 3000
+
+CMD [ "./todo" ]

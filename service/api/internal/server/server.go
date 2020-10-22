@@ -11,9 +11,9 @@ import (
 )
 
 const (
-	port                    = 3000
-	repositoryTargetService = "repo-service"
-	repositoryTargetPort    = 3000
+	port              = 3000
+	todoTargetService = "todo-service"
+	todoTargetPort    = 3000
 )
 
 func Run() {
@@ -31,10 +31,9 @@ func run(ctx context.Context) error {
 
 	s, err := http.NewServer(&http.Config{
 		Port:                    port,
-		RepositoryTargetService: repositoryTargetService,
-		RepositoryTargetPort:    repositoryTargetPort,
+		RepositoryTargetService: todoTargetService,
+		RepositoryTargetPort:    todoTargetPort,
 	})
-
 	if err != nil {
 		return err
 	}

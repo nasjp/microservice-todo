@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: repo-deployment
+  name: todo-deployment
   namespace: todo
   labels:
-    app: repository
+    app: todo
 spec:
   selector:
     matchLabels:
-      app: repository
+      app: todo
   replicas: 1
   template:
     metadata:
       labels:
-        app: repository
+        app: todo
     spec:
       containers:
-      - name: repository
-        image: microservice-todo/repository
+      - name: todo
+        image: microservice-todo/todo
         imagePullPolicy: Never
         ports:
-        - name: repo-service
+        - name: todo-service
           containerPort: 3000
 
 ---
@@ -29,10 +29,10 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: todo
-  name: repo-service
+  name: todo-service
 spec:
   selector:
-    app: repository
+    app: todo
   ports:
   - port: 3000
-    targetPort: repo-service
+    targetPort: todo-service

@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/nasjp/microservice-todo/service/repository/internal/grpc"
+	"github.com/nasjp/microservice-todo/service/todo/internal/grpc"
 )
 
 const port = 3000
